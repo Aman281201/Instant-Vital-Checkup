@@ -13,14 +13,22 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls import url , include
 from django.contrib import admin
 from django.http import StreamingHttpResponse
 from django.urls import path
+from django.http import HttpResponse
+from django.conf import settings
+
+from . import views
 
 from camera import VideoCamera, gen
 
 urlpatterns = [
+    path('home/', views.homeView , name = 'homeScreen'),
     path('cam/', lambda r: StreamingHttpResponse(gen(VideoCamera()),
                                                      content_type='multipart/x-mixed-replace; boundary=frame')),
     path('admin/', admin.site.urls),
 ]
+
+# static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

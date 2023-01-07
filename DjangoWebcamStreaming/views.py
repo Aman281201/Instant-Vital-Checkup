@@ -4,8 +4,10 @@ from django.http import HttpResponse
 
 def homeView(request):
     template = 'index.html'
-    # return HttpResponse("hell0")
     return render(request,template)
+
+
+
 # def detail(request, question_id):
 #     return HTTPResponse("You're looking at question %s." % question_id)
 

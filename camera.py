@@ -8,14 +8,29 @@ from statistics import mode
 # mpDraw = mp.solutions.drawing_utils
 # mpPose = mp.solutions.pose
 # pose = mpPose.Pose()  
+faceProto="face/opencv_face_detector.pbtxt"
+faceModel="face/opencv_face_detector_uint8.pb"
+ageProto="age/age_deploy.prototxt"
+ageModel="age/age_net.caffemodel"
+genderProto="gender/gender_deploy.prototxt"
+genderModel="gender/gender_net.caffemodel"
+
+MODEL_MEAN_VALUES=(78.4263377603, 87.7689143744, 114.895847746)
+ageList=['(0-2)', '(4-6)', '(8-12)', '(15-20)', '(25-32)', '(38-43)', '(48-53)', '(60-100)']
+genderList=['Male','Female']
+
+faceNet=cv2.dnn.readNet(faceModel,faceProto)
+ageNet=cv2.dnn.readNet(ageModel,ageProto)
+genderNet=cv2.dnn.readNet(genderModel,genderProto)
+
 class VideoCamera(object):
     def __init__(self):
         # Using OpenCV to capture from device 0. If you have trouble capturing
         # from a webcam, comment the line below out and use a video file
         # instead.
         self.video = cv2.VideoCapture(0)
-        # self.video.set(4,1920)
-        # self.video.set(3,1080)
+        self.video.set(4,1920)
+        self.video.set(3,1080)
         self.video.set(5,30)
         self.beats = [0]*120
         self.secs = [time.time()]*120
@@ -49,6 +64,7 @@ class VideoCamera(object):
         minheight =1000
         maxheight=0
         # success, img = cap.read()
+        print(img.shape)
         imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         # img = img[0:, 200:1000]
         # img = cv2.resize(img, (1500,1500))
@@ -80,12 +96,11 @@ class VideoCamera(object):
     
     def get_pulse_frame(self):
         self.ret, img = self.video.read()
-
+        print("gg",img.shape)
         # img = cv2.resize(img, (1500,1500))
-
-       
         img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         face_img = img[300:400, 660:960]
+        print("g1g",face_img.shape)
     
         self.beats = self.beats[1:] + [np.average(face_img)]
         self.secs = self.secs[1:] + [time.time()]
@@ -171,37 +186,22 @@ def highlightFace(net, frame, conf_threshold=0.7):
 
 def gen0(camera):
 
-    abhinn(camera)
-    # faceProto="face/opencv_face_detector.pbtxt"
-    # faceModel="face/opencv_face_detector_uint8.pb"
-    # ageProto="age/age_deploy.prototxt"
-    # ageModel="age/age_net.caffemodel"
-    # genderProto="gender/gender_deploy.prototxt"
-    # genderModel="gender/gender_net.caffemodel"
+    #abhinn(camera)
 
-    # MODEL_MEAN_VALUES=(78.4263377603, 87.7689143744, 114.895847746)
-    # ageList=['(0-2)', '(4-6)', '(8-12)', '(15-20)', '(25-32)', '(38-43)', '(48-53)', '(60-100)']
-    # genderList=['Male','Female']
+    padding=20
+    count = 0
+    a = [] 
+    g = []
 
-    # faceNet=cv2.dnn.readNet(faceModel,faceProto)
-    # ageNet=cv2.dnn.readNet(ageModel,ageProto)
-    # genderNet=cv2.dnn.readNet(genderModel,genderProto)
-
-    # padding=20
-    # count = 0
-    # a = []
-    # g = []
-
-
-    # while count<50:
+    while True:
         
-    #     count,a,g,frame = camera.get_gen_age_frame(padding,count,a,g,faceNet)
-    #     yield (b'--frame\r\n'
-    #         b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+        count,a,g,frame = camera.get_gen_age_frame(padding,count,a,g,faceNet)
+        yield (b'--frame\r\n'
+            b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 
-    # print("final after mode")
-    # print(mode(a))
-    # print(mode(g))
+    print("final after mode")
+    print(mode(a))
+    print(mode(g))
        
         
 def abhinn(camera):

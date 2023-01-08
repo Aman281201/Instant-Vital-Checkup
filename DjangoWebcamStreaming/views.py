@@ -11,6 +11,15 @@ def checkupView(request):
     template = 'checkup.html'
     return render(request,template)
 
-def resultView(request):
+def resultsView(request):
     template = 'results.html'
-    return render(request, template)
+    context = {}
+    return render(request,template)
+
+def contactView(request):
+    template = 'contact.html'
+    return render(request,template)
+
+def aboutView(request):
+    return httpResponse()
+

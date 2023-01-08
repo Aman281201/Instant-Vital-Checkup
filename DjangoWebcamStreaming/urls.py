@@ -27,10 +27,12 @@ from camera import VideoCamera, gen, gen2, gen0
 urlpatterns = [
     path('home/', views.homeView , name = 'homeScreen'),
     path('checkup/', views.checkupView, name='checkup'),
-    path('results/', views.resultView, name='result'),
+    path('results/', views.resultsView, name='result'),
     path('gen/', lambda r: StreamingHttpResponse(gen0(VideoCamera()),content_type='multipart/x-mixed-replace; boundary=frame')),
     path('cam/', lambda r: StreamingHttpResponse(gen(VideoCamera()),content_type='multipart/x-mixed-replace; boundary=frame')),
     path('pulse/', lambda r: StreamingHttpResponse(gen2(VideoCamera()),content_type='multipart/x-mixed-replace; boundary=frame')),
+    path('contact/', views.contactView, name="contact"),
+    path('about/', views.aboutView, name="about"),
     path('admin/', admin.site.urls),
 ]
 

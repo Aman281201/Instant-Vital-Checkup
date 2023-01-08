@@ -22,12 +22,15 @@ from django.conf import settings
 
 from . import views
 
-from camera import VideoCamera, gen
+from camera import VideoCamera, gen, gen2, gen0
 
 urlpatterns = [
     path('home/', views.homeView , name = 'homeScreen'),
-    path('cam/', lambda r: StreamingHttpResponse(gen(VideoCamera()),
-                                                     content_type='multipart/x-mixed-replace; boundary=frame')),
+    path('checkup/', views.checkupView, name='checkup'),
+    path('results/', views.resultView, name='result'),
+    path('gen/', lambda r: StreamingHttpResponse(gen0(VideoCamera()),content_type='multipart/x-mixed-replace; boundary=frame')),
+    path('cam/', lambda r: StreamingHttpResponse(gen(VideoCamera()),content_type='multipart/x-mixed-replace; boundary=frame')),
+    path('pulse/', lambda r: StreamingHttpResponse(gen2(VideoCamera()),content_type='multipart/x-mixed-replace; boundary=frame')),
     path('admin/', admin.site.urls),
 ]
 

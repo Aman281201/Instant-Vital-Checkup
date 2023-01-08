@@ -23,11 +23,11 @@ from django.conf import settings
 from . import views
 
 from camera import VideoCamera, gen, gen2, gen0
-
+# <int:age>/<int:h>/<int:arml>/<int:legl>/<int:waistl>/<int:w>
 urlpatterns = [
     path('home/', views.homeView , name = 'homeScreen'),
     path('checkup/', views.checkupView, name='checkup'),
-    path('results/', views.resultsView, name='result'),
+    path('results/<int:gen>/<int:age>/<int:h>/<int:arml>/<int:legl>/<int:waistl>/<int:w>/', views.resultsView, name='result'),
     path('gen/', lambda r: StreamingHttpResponse(gen0(VideoCamera()),content_type='multipart/x-mixed-replace; boundary=frame')),
     path('cam/', lambda r: StreamingHttpResponse(gen(VideoCamera()),content_type='multipart/x-mixed-replace; boundary=frame')),
     path('pulse/', lambda r: StreamingHttpResponse(gen2(VideoCamera()),content_type='multipart/x-mixed-replace; boundary=frame')),

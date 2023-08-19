@@ -19,21 +19,21 @@ We aim at automating such procedures using Computer Vision (OpenCV) and Machine 
 
 ### Idea
 
-With the power of Machine Learning, Computer Vision and a few well placed sensors, we can entirely eliminate the need for a human attendee in the pre-surgical procedures, giving us quicker and more reliable results. This would eliminate the otherwise time and human intensive work of measuring vitals of a person. 
-
-Using well placed cameras, we will be able to monitor the body temperature, pulse and get a good estimate of the weight and height of the person to get an idea of their Body Mass Index(BMI). This would be done while the person is filling out the registration form, thus ensuring quick treatment for the affected.
+  With the power of Machine Learning, Computer Vision and a few well placed sensors, we can entirely eliminate the need for a human attendee in the pre-surgical procedures, giving us quicker and more reliable results. This would eliminate the otherwise time and human intensive work of measuring vitals of a person. 
+  
+  Using well placed cameras, we will be able to monitor the body temperature, pulse and get a good estimate of the weight and height of the person to get an idea of their Body Mass Index(BMI). This would be done while the person is filling out the registration form, thus ensuring quick treatment for the affected.
 
 ### Working
 
-IVC has a special setup where when the person is at the marked spot, the camera takes his/her picture, and using trigonometric ratios, the person's height, arm length, waist breadth, and leg length are determined. Presently two parameters need to be hard coded(height and distance of camera).
-We also made an approximate guess of waist circumference using frontal waist breadth.
-
-Using a pre-trained open-source deep neural network and computer vision which takes video feed as input, we estimated a person's age and gender.
-
-Using the parameters estimated in the previous slides i.e. height, arm length, leg length, gender, age, and waist circumference, we trained a random forest model to estimate the weight. The model was able to deliver an estimated accuracy of 98.6%.
-
-To get your pulse measured the person has to walk towards the camera.
-The camera takes a zoomed video of the forehead, using computer vision we are able to estimate the pulse of a person by measuring the change in skin colour of the person’s forehead.
+  • IVC has a special setup where when the person is at the marked spot, the camera takes his/her picture, and using trigonometric ratios, the person's height, arm length, waist breadth, and leg length are determined. Presently two parameters need to be hard coded(height and distance of camera).
+  We also made an approximate guess of waist circumference using frontal waist breadth.
+  
+  • Using a pre-trained open-source deep neural network and computer vision which takes video feed as input, we estimated a person's age and gender.
+  
+  • Using the parameters estimated in the previous slides i.e. height, arm length, leg length, gender, age, and waist circumference, we trained a random forest model to estimate the weight. The model was able to deliver an estimated accuracy of 98.6%.
+  
+  • To get your pulse measured the person has to walk towards the camera.
+  The camera takes a zoomed video of the forehead, using computer vision we are able to estimate the pulse of a person by measuring the change in skin colour of the person’s forehead.
 
 
 ### Web Interface

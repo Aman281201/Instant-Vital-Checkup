@@ -1,6 +1,10 @@
 # Instant Vital Checkup (IVC)
 Patients get quick and fair treatment, hospitals save on human power
 
+### Youtube Video
+https://youtu.be/ynmtKTP3QwY
+
+
 ### Technology and Frameworks used
 &nbsp;&nbsp;&nbsp;&nbsp; - `Django`<br>
 &nbsp;&nbsp;&nbsp;&nbsp; - `OpenCV`<br>

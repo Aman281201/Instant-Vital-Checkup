@@ -4,6 +4,8 @@ Patients get quick and fair treatment, hospitals save on human power
 ### Youtube Video
 https://youtu.be/ynmtKTP3QwY
 
+### Team Members
+Aman Kumar, Dhruv Mishra, Utkarsh Pal, Abhinn Yadav, Arsh Gupta
 
 ### Technology and Frameworks used
 &nbsp;&nbsp;&nbsp;&nbsp; - `Django`<br>

@@ -1,19 +1,15 @@
-# Django-Webcam-Streaming
-Django Webcam Streaming
+# Instant Vital Checkup (IVC)
+Patients get quick and fair treatment, hospitals save on human power
 
-### Website
-http://www.mesebilisim.com
+### Idea
 
-### Description
-I've adapted log0 codes for Django.
-https://github.com/log0/video_streaming_with_flask_example
+With the power of Machine Learning, Computer Vision and a few well placed sensors, we can entirely eliminate the need for a human attendee in the pre-surgical procedures, giving us quicker and more reliable results. This would eliminate the otherwise time and human intensive work of measuring vitals of a person. 
 
-### Credits
-Most of the code credits to Miguel Grinberg, except that I made a small tweak. Thanks!
-http://blog.miguelgrinberg.com/post/video-streaming-with-flask
+Using well placed cameras, we will be able to monitor the body temperature, pulse and get a good estimate of the weight and height of the person to get an idea of their Body Mass Index(BMI). This would be done while the person is filling out the registration form, thus ensuring quick treatment for the affected.
 
-### Usage
-1. Install Python dependencies: cv2, django. (pip install -r requirements.txt)
-2. Run "python manage.py runserver".
-3. Open browser http://127.0.0.1:8000/
-4. URL: http://127.0.0.1:8000/monitor/
+### Working
+Our Idea works uses recent technologies like machine learning and computer vision to replace the conventional and inefficient human labor. 
+We have used machine learning and computer vision technologies to obtain the data which otherwise would have taken a human attendee. For further info check the presentation and video.
+
+
+
